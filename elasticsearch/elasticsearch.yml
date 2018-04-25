@@ -1,0 +1,6 @@
+cluster.name: soselk
+node.name: node-1
+path.data: /db/elasticsearch
+path.logs: /var/log/elasticsearch
+network.host: 0.0.0.0
+http.port: 9200

@@ -1,0 +1,25 @@
+readonlyrest:
+ enable: true
+
+ response_if_req_forbidden: Access denied!
+
+ access_control_rules:
+
+  - name: "Localhost kibana queries"
+    type: allow
+    hosts: ["127.0.0.1"]
+
+  - name: "::Kibana server::"
+    type: allow
+
+  - name: "Accept logs from SEG"
+    groups: ["LOGSEG"]
+    indices: ["@{user}-*", ".kibana"]
+    actions: ["indices:admin/*", "indices:data/*", "indices:*", "cluster:*"]
+
+ users:
+
+  - username: user
+    auth_key: user:password
+    groups: ["LOGSEG"]
+
